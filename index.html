@@ -27,55 +27,60 @@
             font-family: inherit;
         }
 
-.flag {
-  position: fixed;
-  width: 120px;             /* 2× bigger than before (was 60px) */
-  top: -150px;              /* start just above the viewport */
-  opacity: 0.9;
-  animation-name: fall;
-  animation-timing-function: linear;
-  /* duration and delay will be set inline via JS for randomisation */
-}
+        .flag {
+            position: fixed;
+            width: 120px;
+            /* 2× bigger than before (was 60px) */
+            top: -150px;
+            /* start just above the viewport */
+            opacity: 0.9;
+            animation-name: fall;
+            animation-timing-function: linear;
+            /* duration and delay will be set inline via JS for randomisation */
+        }
 
-@keyframes fall {
-  to {
-    top: 110vh;             /* end just below the viewport */
-  }
-}
+        @keyframes fall {
+            to {
+                top: 110vh;
+                /* end just below the viewport */
+            }
+        }
     </style>
+    <meta name="robots" content="noindex, nofollow">
 </head>
 
 <body>
     <h1>Yes.</h1>
 </body>
 <script>
-setTimeout(() => {
-  const flagURL = 'flag.png';
+    setTimeout(() => {
+        const flagURL = 'flag.png';
 
-  // every 200ms, create a new flag (≈5 flags/sec)
-  setInterval(() => {
-    const img = document.createElement('img');
-    img.src = flagURL;
-    img.alt = 'pride flag';
-    img.classList.add('flag');
-    const size = 80 + Math.random() * 80;
-    img.style.width = size + 'px';
+        // every 200ms, create a new flag (≈5 flags/sec)
+        setInterval(() => {
+            const img = document.createElement('img');
+            img.src = flagURL;
+            img.alt = 'pride flag';
+            img.classList.add('flag');
+            const size = 80 + Math.random() * 80;
+            img.style.width = size + 'px';
 
-    // randomise horizontal start
-    img.style.left = Math.random() * 90 + 'vw';
+            // randomise horizontal start
+            img.style.left = Math.random() * 90 + 'vw';
 
-    // random fall-duration between 4s and 7s
-    const duration = 4 + Math.random() * 3;
-    img.style.animationDuration = duration + 's';
+            // random fall-duration between 4s and 7s
+            const duration = 4 + Math.random() * 3;
+            img.style.animationDuration = duration + 's';
 
-    // random delay so they don’t all drop at once
-    img.style.animationDelay = Math.random() * 2 + 's';
+            // random delay so they don’t all drop at once
+            img.style.animationDelay = Math.random() * 2 + 's';
 
-    // remove once the animation finishes
-    img.addEventListener('animationend', () => img.remove());
+            // remove once the animation finishes
+            img.addEventListener('animationend', () => img.remove());
 
-    document.body.appendChild(img);
-  }, 200);
-}, 4000);
+            document.body.appendChild(img);
+        }, 200);
+    }, 4000);
 </script>
+
 </html>
